@@ -29,7 +29,7 @@ func main() {
 			case <-ctx.Done(): //при получении данных о исполненности контекста, завершаем работу горутины.
 				return
 			case <-time.After(1 * time.Second): //в цикле раз в секунду(для наглядности) читаем данные из канала.
-				fmt.Println(<-ch)
+				fmt.Println(<-ch) // TODO поменять местами с time.After
 			}
 		}
 	}()
