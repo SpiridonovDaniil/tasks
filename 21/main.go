@@ -26,9 +26,9 @@ type adapter struct { //адаптер, реализующий нужный на
 
 func (a *adapter) work() string {
 	if a == nil || a.oldService == nil {
-		return
+		return ""
 	}
-	
+
 	return a.workOld()
 }
 
@@ -37,5 +37,3 @@ func main() {
 	adapt := newAdapter(&old)
 	fmt.Println(adapt.work())
 }
-
-//TODO разобраться, ведь адаптер должен предоставлять другим типам методы старого типа

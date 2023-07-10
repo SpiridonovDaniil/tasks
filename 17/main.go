@@ -31,20 +31,19 @@ func main() {
 
 	i := sort.Search(len(a), func(i int) bool { return a[i] >= x }) //указываем, что поиск ведется в отсортированном по возрастанию слайсе
 	if i < len(a) && a[i] == x {
-		fmt.Println("элемент 6 найден по индексу", i) //стоит обратить внимание, что поиск возвращает первое вхождение объекта в слайсе
+		fmt.Printf("элемент %d найден по индексу %d\n", x, i) //стоит обратить внимание, что поиск возвращает первое вхождение объекта в слайсе
 	} else {
-		fmt.Println("элемент 6 не найден, но мог бы быть вставлен по индексу:", i)
+		fmt.Printf("элемент %d не найден, но мог бы быть вставлен по индексу: %d\n", x, i)
 	}
 
 	y := []string{"a", "b", "c", "d"}
-	target := "a"
+	target := "b"
 	z, found := sort.Find(len(y), func(i int) int {
 		return strings.Compare(target, y[i])
 	})
 	if found {
-		fmt.Printf("found %s at entry %d\n", target, z)
+		fmt.Printf("элемент %s найден по индексу %d\n", target, z)
 	} else {
-		fmt.Printf("%s not found, would insert at %d", target, z)
+		fmt.Printf("элемент %s не найден, но мог бы быть вставлен по индексу %d\n", target, z)
 	}
-	//TODO попробывать реализовать функцию Find
 }

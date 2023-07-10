@@ -1,12 +1,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"time"
 )
 
 func main() {
-	sleepWithTimer(5)
+	var d time.Duration = 3
+	sleepWithTimer(d)
+	sleepWithCtx(d)
 }
 
 func sleepWithTimer(d time.Duration) {
@@ -20,7 +23,19 @@ func sleepWithTimer(d time.Duration) {
 	fmt.Println("goroutine awaked")
 }
 
-// todo добавить вариант с context.WithTimeout(context.Background(), time.Duration)
+func sleepWithCtx(d time.Duration) {
+	if d <= 0 { //проверяем корректность полученных данных.
+		return //если значение <=0 возвращаемся.
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), d)
+	defer cancel()
+	fmt.Println("goroutine sleep")
+	select {
+	case <-ctx.Done():
+		fmt.Println("goroutine awaked")
+		return
+	}
+}
 
 //func timeSleep(ns int64) {
 //	if ns <= 0 {
