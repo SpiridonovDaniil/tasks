@@ -20,6 +20,8 @@ func sleepWithTimer(d time.Duration) {
 	fmt.Println("goroutine awaked")
 }
 
+// todo добавить вариант с context.WithTimeout(context.Background(), time.Duration)
+
 //func timeSleep(ns int64) {
 //	if ns <= 0 {
 //		return
