@@ -12,7 +12,7 @@ type contract interface { //интерфейс, с которым должна �
 type oldService struct { //пользовательский тип, который система должна адаптировать под себя.
 }
 
-func (o *oldService) work() string { //метод, который мы бы хотели использовать.
+func (o *oldService) workOld() string { //метод, который мы бы хотели использовать.
 	return "result old service"
 }
 
@@ -22,6 +22,14 @@ func newAdapter(oldService *oldService) contract { //конструктор ад
 
 type adapter struct { //адаптер, реализующий нужный нам интерфейс.
 	*oldService
+}
+
+func (a *adapter) work() string {
+	if a == nil || a.oldService == nil {
+		return
+	}
+	
+	return a.workOld()
 }
 
 func main() {
