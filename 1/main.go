@@ -17,6 +17,10 @@ type Human struct {
 } //композиция используется в Go со структурами(объект состоит из более мелких объектов)
 
 func (h *Human) speak() {
+	if h == nil {
+		return
+	}
+	
 	fmt.Printf("%s %s: hello world! I am %d years old", h.name, h.surname, h.age)
 } // метод структуры Human, который будет встроен в структуру Action
 
