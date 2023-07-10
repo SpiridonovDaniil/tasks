@@ -38,8 +38,8 @@ func main() {
 
 	y := []string{"a", "b", "c", "d"}
 	target := "a"
-	z, found := sort.Find(y.Len(), func(i int) int {
-		return strings.Compare(target, y.At(z))
+	z, found := sort.Find(len(y), func(i int) int {
+		return strings.Compare(target, y[i])
 	})
 	if found {
 		fmt.Printf("found %s at entry %d\n", target, z)
