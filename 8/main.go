@@ -5,11 +5,9 @@ import (
 	"log"
 )
 
-var n int64
-
 func main() {
-	var i, b int
-	_, err := fmt.Scan(&i, &b)
+	var n, i, b int64
+	_, err := fmt.Scan(&n, &i, &b)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -17,6 +15,6 @@ func main() {
 	changeBit(i, b, n)
 }
 
-func changeBit(i, b int, num int64) {
-	укпф
+func changeBit(i, b, num int64) int {
+	return num & (b << i)
 }
