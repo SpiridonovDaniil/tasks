@@ -50,8 +50,9 @@ func worker(ctx context.Context, ch chan int) {
 		select {
 		case <-ctx.Done(): //при получении данных(закрытый канал) о закрытии контекста, завершаем работу функции worker.
 			return
-		case <-time.After(1 * time.Second): //задержка для наглядности количества горутин и избежания ужаса в терминале. :)
-			fmt.Println(<-ch) //читаем с канала.
+		case val := <- ch:
+			<-time.After(time.Second) //задержка для наглядности количества горутин и избежания ужаса в терминале. :)
+			fmt.Println(val)
 		}
 	}
 }
