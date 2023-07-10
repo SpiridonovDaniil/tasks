@@ -33,7 +33,7 @@ func check1(text string) bool {
 func check2(text string) bool {
 	for idx, val := range []rune(text) { //итерируемся по строке в виде рун(для корректной работы с символами unicode).
 		sl := append([]rune(text)[:idx], []rune(text)[idx+1:]...) //копируем слайс рун строки без искомого элемента.
-		if strings.ContainsRune(string(sl), val) {                //ищем в слайсе еще один искомый элемент.
+		if strings.ContainsRune(string(sl), val) {                //ищем в слайсе еще один искомый элемент. // todo проверяем только оставшиеся значения
 			return false
 		}
 	}
