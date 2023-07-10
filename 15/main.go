@@ -24,13 +24,14 @@ func main() {
 func someFunc() {
 	v := createHugeString(1 << 10)
 	v = "ущпрцзтщушкепртукщпртк"
-	justString = v[:100]
+	justString = string([]rune(v)[:100])
 	fmt.Println(justString)
 }
 
 func createHugeString(num int) string {
 	arr := make([]rune, num)
 	for i := 0; i < num; i++ {
+		// todo pakcage unicode https://stackoverflow.com/questions/22892120/how-to-generate-a-random-string-of-a-fixed-length-in-go
 		arr[i] = rand.Int31n(440)
 	}
 
